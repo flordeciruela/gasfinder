@@ -43,4 +43,9 @@ Se está incluyendo las siguientes librerias:
 1. Clonar el repositorio hacia tu cuenta personal para empezar con las modificaciones.
 2. Crea el componente search
 3. Crea el componente stationDetails
-4. Crea el componente gmap
+4. Crea el componente gmap 
+5. Abrir la terminal
+escribir: npm install -g serve
+Estando en la carpeta de proyecto escribir:
+cd Desktop
+cd gasfinder
