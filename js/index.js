@@ -4,6 +4,9 @@ const render = (root) => {
   root.empty();
   const wrapper = $('<div class="wrapper"></div>');
   wrapper.append(Header(_ => render(root)));
+	wrapper.append(Search(_ => render(root)));
+	wrapper.append(ContentStations(_ => render(root)));
+	
   root.append(wrapper);
 }
 

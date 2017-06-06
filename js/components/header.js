@@ -2,10 +2,9 @@
 
 const Header = (update) => {
   const header = $("<header></header>");
-  const title = $("<span>Gas Finder</span>");
+  const title = $("<p>Gas Finder</p>");
   const icon = $('<i class="fa fa-chevron-left" aria-hidden="true"></i>');
 
   header.append(title);
-
   return header;
 }
