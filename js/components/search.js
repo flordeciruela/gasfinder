@@ -1,52 +1,82 @@
 'use strict';
 
-const Search = (update) => {
-	const contentInput = $('<form id="content-input"></form>');
-	const input = $('<input id="input" type="text" placeholder="Ingresa tu distrito a buscar"></input>');
-	contentInput.append(input);
-	const objStations = state.stations;
-	console.log(objStations);
+const LoadStations = (update) => {
+	const stationContainer = $('<div class="station-container container"></div>');
+	state.stations.forEach((stationObj) => {
 
-	input.on('keydown',(e) => {
-		//e.preventDefault();
-		$(".station-container").empty();
-		const textSearch = String.fromCharCode(e.which);
-		//const textSearch = String.fromCharCode(e.which);
-		console.log(textSearch);
+		const divider = $('<div class"divider col s12"></div>');
+		const stationItem = $('<div class"station-item row section"></div>');
+		const datos = $('<div class"left-align col s11"></div>');
+		const name = $('<h5>'+stationObj.name+'</h5>');
+		const address = $('<p>'+stationObj.address+'</p>');
+		const district = $('<p>'+stationObj.district+'</p>');
+		const iconDiv = $('<div class"right-align col s1"></div>');
+		const icon = $('<a href="#" class="fa fa-map icon-map"></a>');
 
-		  state.stations.forEach((stationObj) => {
+		stationContainer.append(divider);
+		datos.append(name);
+		datos.append(address);
+		datos.append(district);
+		iconDiv.append(icon);
+		stationItem.append(datos);
+		stationItem.append(iconDiv);
+		stationContainer.append(stationItem);
+  });
 
-				console.log(stationObj.district);
-				console.log(stationObj.district[0]);
-				if (stationObj.district[0] == textSearch) {
-					const stationItem = $('<div class"station-item"></div>');
-					const name = $('<h5>'+stationObj.name+'</h5>');
-					const address = $('<p>'+stationObj.address+'</p>');
-
-					stationItem.append(name);
-					stationItem.append(address);
-					$(".station-container").append(stationItem);
-				} else {
-					console.log("error");
-				}
-		  });
-		//update();
-	});
-	return contentInput;
+  return stationContainer;
 
 }
 
-const ContentStations = (update) => {
-  const stationContainer = $('<div class="station-container"></div>');
-  state.stations.forEach((stationObj) => {
+const Search = (update) => {
+	const divMostrar = $('<div class="container" id="content-form"></div>');
+	const rowForm = $('<div class="row"></div>');
+	const contentInput = $('<form class="col s12"></form>');
+	const input = $('<input id="input" type="text" placeholder="Ingresa tu distrito a buscar">');
 
-		const stationItem = $('<div class"station-item"></div>');
-		const name = $('<h5>'+stationObj.name+'</h5>');
-		const address = $('<p>'+stationObj.address+'</p>');
+	input.on("keyup", (e) => {
+	//e.preventDefault();
+	$(".station-container").empty();
+	const filterStations = filterByDistrict(state.stations, $(e.currentTarget).val());
+	reRender(divMostrar, filterStations,update);
 
-		stationItem.append(name);
-		stationItem.append(address);
-    stationContainer.append(stationItem);
+	});
+
+	contentInput.append(input);
+	rowForm.append(contentInput);
+	rowForm.append(divMostrar);
+	return rowForm;
+
+}
+
+const reRender = (container, filterStations, update) => {
+  container.empty();
+  //console.log(container);
+  filterStations.forEach((station) => {
+    container.append(ContentStations(station, update));
   });
-  return stationContainer;
+}
+
+const ContentStations = (station, update) => {
+	const stationItem = $('<div class"station-item"></div>');
+	const datos = $('<div class"left-align"></div>');
+	const name = $('<h5>'+station.name+'</h5>');
+	const address = $('<p>'+station.address+'</p>');
+	const district = $('<p>'+station.district+'</p>');
+	const iconDiv = $('<div class"right-align"></div>');
+	const icon = $('<a href="#" class="fa fa-map icon-map"></a>');
+
+	datos.append(name);
+	datos.append(address);
+	datos.append(district);
+	iconDiv.append(icon);
+	stationItem.append(datos);
+	stationItem.append(iconDiv);
+
+	icon.on("click", (e) => {
+	e.preventDefault();
+	state.selectedStation = station;
+	//update();
+	});
+
+	return stationItem;
 }
