@@ -9,9 +9,9 @@ const render = (root) => {
     root.append(wrapper);
   }else{
     wrapper.append(Gmaps(_ => render(root)));
-    wrapper.append(stationDetail(_ => render(root)));
   }
 	wrapper.append(LoadStations(_ => render(root)));
+	wrapper.append(StationDetails(_ => render(root)));
 
   root.append(wrapper);
 }

@@ -29,7 +29,7 @@ const LoadStations = (update) => {
 
 const Search = (update) => {
 	const divMostrar = $('<div class="container" id="content-form"></div>');
-	const rowForm = $('<div class="row"></div>');
+	const rowForm = $('<div class="row row-form"></div>');
 	const contentInput = $('<form class="col s12"></form>');
 	const input = $('<input id="input" type="text" placeholder="Ingresa tu distrito a buscar">');
 
@@ -79,4 +79,15 @@ const ContentStations = (station, update) => {
 	});
 
 	return stationItem;
+}
+
+const StationDetails = (update) => {
+
+	$('.fa-map').on("click", (e) => {
+		//e.preventDefault();
+		$(".station-container").empty();
+		$(".row-form").empty();
+	//update();
+	});
+
 }

@@ -17,3 +17,8 @@ header {
 header .fa-chevron-left {
   margin-right: 16px;
 }
+
+#map {
+  height: 300px;
+	width: 100%;
+}
