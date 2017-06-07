@@ -18,6 +18,19 @@ header .fa-chevron-left {
   margin-right: 16px;
 }
 
+.row-form {
+	padding: 10px;
+}
+
+.row-form input {
+	background-color: #fff;
+	padding: 10px;
+}
+
+.row-form i {
+	color: gray;
+}
+
 #map {
   height: 300px;
 	width: 100%;

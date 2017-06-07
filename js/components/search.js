@@ -30,7 +30,8 @@ const LoadStations = (update) => {
 const Search = (update) => {
 	const divMostrar = $('<div class="container" id="content-form"></div>');
 	const rowForm = $('<div class="row row-form"></div>');
-	const contentInput = $('<form class="col s12"></form>');
+	const contentInput = $('<form class="input-field col s12 valign-wrapper"></form>');
+	const iconInput = $('<i class="material-icons prefix">search</i>');
 	const input = $('<input id="input" type="text" placeholder="Ingresa tu distrito a buscar">');
 
 	input.on("keyup", (e) => {
@@ -41,6 +42,7 @@ const Search = (update) => {
 
 	});
 
+	contentInput.append(iconInput);
 	contentInput.append(input);
 	rowForm.append(contentInput);
 	rowForm.append(divMostrar);

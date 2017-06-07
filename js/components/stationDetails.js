@@ -1,9 +1,22 @@
 'use strict';
 
-const PrintDetails = () => {
+const PrintDetails = (update) => {
 	const contentDetails = $('<div class="container content-details"></div>');
-	const rowMap = $('<div class="row"></div>');
+	const rowDetails = $('<div class="row"></div>');
 	const map = $('<div id="map" class="col s12"></div>');
+	const contentInfo = $('<div id="content-info" class="col s12"></div>');
+	const pInfo = $('<p></p>');
+	const spanNombre = $('<span></span>');
+	const spanKm = $('<span></span>');
+	const divProducts = $('<div class="products"></div>');
+
+	contentDetails.append(rowMap);
+	rowDetails.append(map);
+	rowDetails.append(contentInfo);
+	contentInfo.append(pInfo);
+	pInfo.append(spanNombre);
+	pInfo.append(spanKm);
+	contentInfo.append(divProducts);
 
 	function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
