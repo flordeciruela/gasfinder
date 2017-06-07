@@ -45,7 +45,4 @@ Se está incluyendo las siguientes librerias:
 3. Crea el componente stationDetails
 4. Crea el componente gmap 
 5. Abrir la terminal
-escribir: npm install -g serve
-Estando en la carpeta de proyecto escribir:
-cd Desktop
-cd gasfinder
+
